@@ -1,13 +1,13 @@
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
-        int currentSum =0;
-        int maxSum = nums[0];
+        int currSum = 0;
+        int maxSum =nums[0];
         for(int num: nums){
-            currentSum += num;
-            maxSum = max(maxSum, currentSum);
-            if(currentSum<0){
-                currentSum = 0;
+            currSum += num;
+            maxSum = max(maxSum,currSum );
+            if(currSum<0){
+                currSum= 0;
             }
         }
         return maxSum;
