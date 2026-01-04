@@ -1,26 +1,24 @@
 class Solution {
+private:
+    int factors(int n) {
+        int sum = 0, c = 0;
+        for(int i = 2; i*i <= n; i++) {
+            if(n % i == 0) {
+                int j = n / i;
+                if(j == i || c > 0) return 0;
+                sum += i + j;
+                c++;
+            }
+        }
+        if(c == 0) return 0;
+        return 1 + sum + n;
+    }
 public:
     int sumFourDivisors(vector<int>& nums) {
-        long long total = 0;
-        for (int n : nums) {
-            int cnt = 0;
-            int s = 0;
-            int root = (int)sqrt(n);
-            for (int i = 1; i <= root; ++i) {
-                if (n % i == 0) {
-                    int j = n / i;
-                    if (i == j) {
-                        cnt += 1;
-                        s += i;
-                    } else {
-                        cnt += 2;
-                        s += i + j;
-                    }
-                    if (cnt > 4) break;
-                }
-            }
-            if (cnt == 4) total += s;
+        int sum = 0;
+        for(int i = 0; i < nums.size(); i++) {
+            sum += factors(nums[i]);
         }
-        return (int)total;
+        return sum;
     }
 };
