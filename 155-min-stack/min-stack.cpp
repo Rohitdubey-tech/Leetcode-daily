@@ -2,9 +2,7 @@ class MinStack {
 public:
 stack<int> st;
 stack<int>minSt;
-    MinStack() {
-        
-    }
+    MinStack() {}
     
     void push(int val) {
         st.push(val);
