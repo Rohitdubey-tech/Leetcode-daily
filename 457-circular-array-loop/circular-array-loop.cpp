@@ -8,7 +8,6 @@ public:
     
     bool circularArrayLoop(vector<int>& nums) {
         int n = nums.size();
-        // we can use slow and fast pointer to check whether there is loop or not
         for(int &num: nums)
             num %= n;
         for(int i=0;i<n;i++){
@@ -18,12 +17,11 @@ public:
                 slow = next(nums,slow);
                 fast = next(nums,next(nums,fast));
                 if(slow==fast){
-                    if(slow==next(nums,slow)) // single length
+                    if(slow==next(nums,slow)) 
                         return false;
                     return true;
                 }
             }
-			/// DONOT TRAVERSE WHERE THERE IS NO PATH TO GET LOOP.
             int j = i;
             int val = nums[i];
             while (nums[j] * val > 0) {
