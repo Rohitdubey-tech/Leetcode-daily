@@ -1,36 +1,46 @@
 class Solution {
 public:
     vector<int> findSubstring(string s, vector<string>& words) {
-        vector<int> ans;
-        int n = s.length(), m = words.size();
-        if (n == 0 || m == 0) return ans;
-        int l = words[0].length();
+        vector<int> result;
+        if (words.empty()) return result;
 
-        unordered_map<string, int> wordCount;
-        for (const string& w : words) wordCount[w]++;
+        int wordLen = words[0].size();
+        int wordCount = words.size();
+        int totalLen = wordLen * wordCount;
+        int n = s.size();
 
-        for (int i = 0; i < l; i++) {
-            unordered_map<string, int> seen;
-            int left = i, count = 0;
-            for (int j = i; j <= n - l; j += l) {
-                string sub = s.substr(j, l);
-                if (wordCount.count(sub)) {
-                    seen[sub]++;
+        unordered_map<string, int> freq;
+        for (auto &w : words) freq[w]++;
+
+        for (int i = 0; i < wordLen; i++) {
+            unordered_map<string, int> window;
+            int left = i;
+            int count = 0;
+
+            for (int right = i; right + wordLen <= n; right += wordLen) {
+                string word = s.substr(right, wordLen);
+
+                if (freq.count(word)) {
+                    window[word]++;
                     count++;
-                    while (seen[sub] > wordCount[sub]) {
-                        string leftWord = s.substr(left, l);
-                        seen[leftWord]--;
+
+                    while (window[word] > freq[word]) {
+                        string leftWord = s.substr(left, wordLen);
+                        window[leftWord]--;
+                        left += wordLen;
                         count--;
-                        left += l;
                     }
-                    if (count == m) ans.push_back(left);
+
+                    if (count == wordCount) {
+                        result.push_back(left);
+                    }
                 } else {
-                    seen.clear();
+                    window.clear();
                     count = 0;
-                    left = j + l;
+                    left = right + wordLen;
                 }
             }
         }
-        return ans;
+        return result;
     }
 };
