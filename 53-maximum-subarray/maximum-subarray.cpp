@@ -6,9 +6,9 @@ public:
         for(int num : nums){
             currSum += num;
             maxSum = max(maxSum, currSum);
-        if(currSum<0){
-            currSum = 0;
-        }
+            if(currSum<0){
+                currSum = 0;
+            }
         }
         return maxSum;
     }
