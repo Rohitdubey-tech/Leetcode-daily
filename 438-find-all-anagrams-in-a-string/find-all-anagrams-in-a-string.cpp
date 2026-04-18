@@ -1,8 +1,8 @@
 class Solution {
 public:
-    bool allZero(vector<int> & counter){
+    bool allZero(vector<int>counter){
         for(int &i : counter){
-            if(i != 0){
+            if(i!=0){
                 return false;
             }
         }
@@ -11,12 +11,13 @@ public:
     vector<int> findAnagrams(string s, string p) {
         vector<int> ans;
         int n = s.size();
-        vector<int>counter(26, 0);
-        for(int i=0; i<p.size(); i++){
-            counter[p[i]-'a']++;
+        if(p.size()>n) return ans;;
+        vector<int> counter(26, 0);
+        for(char c : p){
+            counter[c-'a']++;
         }
-        int i=0;
-        int j=0;
+        int i =0; 
+        int j =0;
         int k = p.size();
         while(j<n){
             counter[s[j]-'a']--;
@@ -30,5 +31,5 @@ public:
             j++;
         }
         return ans;
-            }
+    }
 };
