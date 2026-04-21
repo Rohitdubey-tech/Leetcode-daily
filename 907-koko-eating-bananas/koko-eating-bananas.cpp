@@ -11,19 +11,17 @@ public:
         return actualHours <= h;
     }
     int minEatingSpeed(vector<int>& piles, int h) {
-        int n = piles.size();
-        int low = 1;
-        int high = *max_element(piles.begin(), piles.end());
-        while(low<high){
-            int mid = low + (high-low)/2;
+        int l=1;
+        int r=*max_element(piles.begin(), piles.end());
+        while(l<r){
+            int mid = l+(r-l)/2;
             if(canEatAll(piles, mid, h)){
-                high = mid;
+                r = mid;
             }
             else{
-                low = mid+1;
+                l = mid+1;
             }
-
         }
-        return low;
+        return l;
     }
 };
