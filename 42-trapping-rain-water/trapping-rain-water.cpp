@@ -2,8 +2,8 @@ class Solution {
 public:
     int trap(vector<int>& height) {
         int n = height.size();
-        int left =0; 
-        int right = n-1;
+        int left = 0;
+        int right = height.size()-1;
         int leftMax = 0;
         int rightMax = 0;
         int water = 0;
