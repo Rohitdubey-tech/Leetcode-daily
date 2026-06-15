@@ -5,7 +5,7 @@ public:
         int left = 0;
         int minLength = INT_MAX;
         int sum = 0;
-        for(int right = 0; right<n; right++){
+        for(int right =0; right<n; right++){
             sum += nums[right];
             while(sum >= target){
                 minLength = min(minLength, right-left+1);
