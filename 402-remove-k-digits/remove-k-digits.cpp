@@ -1,21 +1,31 @@
 class Solution {
 public:
     string removeKdigits(string num, int k) {
-        string st;
-        for(char digit: num){
-            while(k>0 && !st.empty() && st.back()>digit){
-                st.pop_back();
+
+        string result = "";
+
+        for(char ch : num)
+        {
+            while(!result.empty() &&
+                  result.back() > ch &&
+                  k > 0)
+            {
+                result.pop_back();
                 k--;
             }
-            st.push_back(digit);
+
+            if(!result.empty() || ch != '0')
+            {
+                result.push_back(ch);
+            }
         }
-        while(k>0 && !st.empty()){
-            st.pop_back();
+
+        while(k > 0 && !result.empty())
+        {
+            result.pop_back();
             k--;
         }
-        int i =0;
-        while(i<st.size() && st[i] == '0') i++;
-        string result = st.substr(i);
+
         return result.empty() ? "0" : result;
     }
 };
