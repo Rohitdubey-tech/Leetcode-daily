@@ -12,7 +12,7 @@ public:
                 int right = i;
                 int left = st.empty() ? -1 : st.top();
                 long long width = right - left - 1;
-                maxArea = max(maxArea, 1LL * h * width );
+                maxArea = max(maxArea, h * width );
             }
             st.push(i);
         }
