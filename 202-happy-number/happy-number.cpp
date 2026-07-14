@@ -1,22 +1,21 @@
 class Solution {
 public:
-    int getNext(int n){
+    int squaredSum(int n){
         int sum = 0;
         while(n>0){
-            int d= n%10;
+            int d = n%10;
             sum += d*d;
             n=n/10;
         }
         return sum;
     }
     bool isHappy(int n) {
-        int slow = n;
-        int fast = n;
-        do{
-            slow = getNext(slow);
-            fast=getNext(getNext(fast));
+        unordered_set<int>st;
+        while(n!=1 && st.find(n)==st.end()){
+            st.insert(n);
+            n=squaredSum(n);
+
         }
-        while(slow != fast);
-        return slow==1;
+        return n==1;
     }
 };
