@@ -19,8 +19,8 @@ public:
             fast = fast->next;
         }
         while(fast){
-            slow = slow->next;
-            fast = fast->next;
+            slow=slow->next;
+            fast= fast->next;
         }
         slow->next = slow->next->next;
         return dummy->next;
