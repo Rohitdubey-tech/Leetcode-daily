@@ -7,7 +7,7 @@ public:
         int count = 0;
         for(int num : nums){
             prefixSum += num;
-            if(mp.find(prefixSum-k) != mp.end()){
+            if(mp.find(prefixSum -k) != mp.end()){
                 count += mp[prefixSum-k];
             }
             mp[prefixSum]++;
