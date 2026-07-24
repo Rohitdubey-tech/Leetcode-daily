@@ -12,12 +12,18 @@
 class Solution {
 public:
     bool isMirror(TreeNode* left, TreeNode* right){
-        if(!left && !right) return true;
-        if(!left || !right) return false;
-        if(left->val != right->val) return false;
+        if(left == NULL && right == NULL){
+            return true;
+        }
+        if(left ==NULL || right == NULL){
+            return false;
+        }
+        if(left->val != right->val){
+            return false;
+        }
         return isMirror(left->left, right->right) && isMirror(left->right, right->left);
     }
     bool isSymmetric(TreeNode* root) {
-        return isMirror(root, root);
+       return isMirror(root, root);
     }
 };
