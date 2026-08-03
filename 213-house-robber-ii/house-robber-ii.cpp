@@ -1,24 +1,27 @@
 class Solution {
 public:
-    int solve(int i, int end, vector<int>& nums, vector<int>& dp){
-        if(i> end){
-            return 0;
+    int solve(vector<int>& nums, int start, int end){
+        vector<int>dp(end - start + 1);
+        dp[0] = nums[start];
+        for(int i=start+1; i<=end; i++){
+            int index = i - start;
+            int pick = nums[i];
+            if(index > 1){
+                pick += dp[index - 2];
+            }
+            int notPick = dp[index-1];
+            dp[index]=max(pick, notPick);
+
         }
-        if(dp[i] != -1){
-            return dp[i];
-        }
-        int pick = nums[i] + solve(i+2, end, nums, dp);
-        int notPick = solve(i+1, end, nums, dp);
-        return dp[i] = max(pick, notPick);
+        return dp[end-start];
     }
     int rob(vector<int>& nums) {
         int n = nums.size();
-        if(n==1) return nums[0];
-        vector<int>dp1(n, -1);
-        vector<int>dp2(n, -1);
-        int excludeLast = solve(0, n-2, nums, dp1);
-        int excludeFirst = solve(1, n-1, nums, dp2);
-        return max(excludeLast, excludeFirst);
-        
+        if(n==1){
+             return nums[0];
+        }
+        int excludeLast = solve(nums, 0, n-2);
+        int excludeFirst = solve(nums, 1, n-1);
+        return max(excludeFirst, excludeLast);
     }
 };
