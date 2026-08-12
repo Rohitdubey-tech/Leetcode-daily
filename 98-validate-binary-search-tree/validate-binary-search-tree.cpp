@@ -12,9 +12,7 @@
 class Solution {
 public:
     bool check(TreeNode* root, long long minVal, long long maxVal){
-        if(root == NULL){
-            return true;
-        }
+        if(root == NULL) return true;
         if(root->val <= minVal || root->val >= maxVal){
             return false;
         }
