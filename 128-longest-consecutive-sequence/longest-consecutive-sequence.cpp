@@ -10,16 +10,13 @@ public:
             if(st.find(num-1) == st.end()){
                 int curr = num;
                 int length = 1;
-                while(st.find(curr + 1) != st.end()){
+                while(st.find(curr+1) != st.end()){
                     curr++;
-                    length ++;
+                    length++;
                 }
                 longest = max(longest, length);
-
             }
-
         }
         return longest;
-        
     }
 };
