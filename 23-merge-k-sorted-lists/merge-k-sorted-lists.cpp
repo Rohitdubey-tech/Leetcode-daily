@@ -10,44 +10,29 @@
  */
 class Solution {
 public:
-    ListNode* merge(ListNode* left, ListNode* right){
-    ListNode* dummy = new ListNode(-1);
-    ListNode* temp = dummy;
-    while(left != nullptr && right != nullptr){
-        if(left->val < right->val){
-            temp->next = left;
-            temp = temp->next;
-            left = left->next;
+    struct compare{
+        bool operator()(ListNode* a, ListNode* b){
+            return a->val>b->val;
         }
-        else{
-            temp->next = right;
-            temp = temp->next;
-            right = right->next;
-        }
-    }
-    while(left != nullptr){
-        temp->next = left;
-        temp = temp->next;
-        left = left->next;
-    }
-    while(right != nullptr){
-        temp->next = right;
-        temp = temp->next;
-        right = right->next;
-
-    }
-    return dummy->next;
-    }
-    ListNode* mergeSort(vector<ListNode*>&lists, int start, int end){
-        if(start == end) return lists[start];
-        int mid = start + (end - start)/2;
-        ListNode* left = mergeSort(lists, start, mid);
-        ListNode* right = mergeSort(lists, mid+1, end);
-        return merge(left, right);
-    }
-
+    };
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        if(lists.size()==0) return NULL;
-        return mergeSort(lists, 0, lists.size()-1);
+        priority_queue<ListNode*, vector<ListNode*>, compare>pq;
+        for(ListNode* list : lists){
+            if(list != nullptr){
+                pq.push(list);
+            }
+        }
+        ListNode dummy(0);
+        ListNode* tail = &dummy;
+        while(!pq.empty()){
+            ListNode* node = pq.top();
+            pq.pop();
+            tail->next = node;
+            tail = tail->next;
+            if(node->next != NULL){
+                pq.push(node->next);
+            }
+                    }
+                    return dummy.next;
     }
 };
