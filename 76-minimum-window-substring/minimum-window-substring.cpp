@@ -14,20 +14,18 @@ public:
                 required--;
             }
             mp[s[right]]--;
-            while(required == 0){
+            while(required==0){
                 if(right-left+1 < minLength){
                     minLength = right-left+1;
                     start = left;
                 }
                 mp[s[left]]++;
-                if(mp[s[left]]>0){
-                    required++;
-                }
+                if(mp[s[left]]>0) required++;
                 left++;
             }
+            
         }
-            if(minLength == INT_MAX) return "";
-        
+        if(minLength == INT_MAX) return "";
         return s.substr(start, minLength);
     }
 };
