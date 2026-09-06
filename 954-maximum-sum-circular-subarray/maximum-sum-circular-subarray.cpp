@@ -2,8 +2,8 @@ class Solution {
 public:
     int maxSubarraySumCircular(vector<int>& nums) {
         int currMax = 0;
-        int maxSum = INT_MIN;
         int currMin = 0;
+        int maxSum = INT_MIN;
         int minSum = INT_MAX;
         int total = 0;
         for(int num : nums){
@@ -12,7 +12,6 @@ public:
 
             currMin = min(num, currMin+num);
             minSum = min(minSum, currMin);
-
             total += num;
         }
         if(maxSum < 0){
