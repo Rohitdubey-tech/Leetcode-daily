@@ -6,9 +6,9 @@ public:
         for(auto num : nums){
             mp[num]++;
         }
-        for(auto x : mp){
-            if(x.second == 1){
-                return x.first;
+        for(auto it : mp ){
+            if(it.second == 1){
+                return it.first;
             }
         }
         return -1;
