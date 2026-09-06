@@ -10,9 +10,8 @@ public:
             }
         }
             while(pos < n){
-                nums[pos] = 0;
+                nums[pos]=0;
                 pos++;
-        }
-        
+            }
     }
 };
