@@ -5,8 +5,8 @@ public:
         int mid = 0;
         int high = nums.size()-1;
         while(mid <= high){
-            if(nums[mid]== 0){
-                swap(nums[low], nums[mid]);
+            if(nums[mid]==0){
+                swap(nums[mid], nums[low]);
                 low++;
                 mid++;
             }
