@@ -6,14 +6,14 @@ public:
         int n = s.size();
         string ans;
         while(i < n){
-            while(i < n && s[i]==' '){
+            while(i<n && s[i] == ' '){
                 i++;
             }
-            if(i >= n ){
+            if(i>= n){
                 break;
             }
             string word;
-            while(i<n && s[i] != ' '){
+            while(i<n && s[i] !=' '){
                 word += s[i];
                 i++;
             }
