@@ -9,21 +9,20 @@ public:
         int start = 0;
         int minLength = INT_MAX;
         int required = t.size();
-        for(int right =0; right<s.size(); right++){
-            if(mp[s[right]]>0){
+        for(int right = 0; right <s.size(); right++){
+            if(mp[s[right]]> 0){
                 required--;
             }
             mp[s[right]]--;
-            while(required==0){
+            while(required == 0){
                 if(right-left+1 < minLength){
                     minLength = right-left+1;
                     start = left;
                 }
                 mp[s[left]]++;
-                if(mp[s[left]]>0) required++;
+                if(mp[s[left]]> 0) required++;
                 left++;
             }
-            
         }
         if(minLength == INT_MAX) return "";
         return s.substr(start, minLength);
