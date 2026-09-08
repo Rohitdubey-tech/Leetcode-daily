@@ -9,11 +9,10 @@ public:
         for(char c : t){
             mp[c]--;
         }
-        for(auto it: mp){
-            if(it.second !=0){
+        for(auto it : mp){
+            if(it.second != 0){
                 return false;
             }
-
         }
         return true;
     }
