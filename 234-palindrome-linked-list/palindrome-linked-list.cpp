@@ -21,17 +21,18 @@ public:
         return prev;
     }
     bool isPalindrome(ListNode* head) {
-        if(head == NULL || head->next == NULL) return true;
         ListNode* slow = head;
         ListNode* fast = head;
         while(fast && fast->next){
             slow = slow->next;
             fast = fast->next->next;
         }
-        ListNode* second = reverse(slow);
         ListNode* first = head;
+        ListNode* second = reverse(slow);
         while(second){
-            if(first->val != second->val) return false;
+            if(first->val != second->val){
+                return false;
+            }
             first = first->next;
             second = second->next;
         }
