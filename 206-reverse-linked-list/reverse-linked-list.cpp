@@ -14,10 +14,11 @@ public:
         ListNode* prev = NULL;
         ListNode* curr = head;
         while(curr){
-            ListNode* next = curr->next;
+            ListNode* node = curr->next;
             curr->next = prev;
             prev = curr;
-            curr = next;
+            curr = node;
+
         }
         return prev;
     }
