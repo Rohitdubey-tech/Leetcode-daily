@@ -7,7 +7,7 @@ public:
                 st.push(stoi(token));
             }
             else{
-                int b = st.top();
+                int b= st.top();
                 st.pop();
                 int a = st.top();
                 st.pop();
