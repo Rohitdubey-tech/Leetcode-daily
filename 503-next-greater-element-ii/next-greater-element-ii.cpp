@@ -10,7 +10,7 @@ public:
             }
             if(i<n){
                 if(!st.empty()){
-                    ans[i]= st.top();
+                    ans[i] = st.top();
                 }
             }
             st.push(nums[i%n]);
