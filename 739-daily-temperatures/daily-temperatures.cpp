@@ -5,7 +5,7 @@ public:
         stack<int>st;
         vector<int>ans(n, 0);
         for(int i=0; i<n; i++){
-            while(!st.empty() && temperatures[i]>temperatures[st.top()]){
+            while(!st.empty() && temperatures[i] > temperatures[st.top()]){
                 int prevIndex = st.top();
                 st.pop();
                 ans[prevIndex] = i - prevIndex;
@@ -13,5 +13,5 @@ public:
             st.push(i);
         }
         return ans;
-    }
+            }
 };
