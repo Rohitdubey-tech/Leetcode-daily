@@ -11,7 +11,7 @@
 class Solution {
 public:
     ListNode* sortList(ListNode* head) {
-        if(head == nullptr || head->next == nullptr) return head;
+        if(head == NULL || head->next == NULL) return head;
         ListNode* slow = head;
         ListNode* fast = head->next;
         while(fast && fast->next){
@@ -25,28 +25,26 @@ public:
         return merge(left, right);
     }
     ListNode* merge(ListNode* left, ListNode* right){
-        ListNode dummy(0);
-        ListNode* tail = &dummy;
-        while(left != NULL && right != NULL){
+        ListNode* dummy = new ListNode(0);
+        ListNode* tail = dummy;
+        while(left && right){
             if(left->val <= right->val){
                 tail->next = left;
-                left=left->next;
                 tail = tail->next;
-
+                left = left->next;
             }
             else{
                 tail->next = right;
-                right = right->next;
                 tail = tail->next;
+                right = right->next;
             }
-     }
-     if(left != NULL){
-        tail->next = left;
-     }
-     else{
-        tail->next = right;
-     }
-     return dummy.next;
-
+        }
+        if(left){
+            tail->next = left;
+        }
+        else{
+            tail->next = right;
+        }
+        return dummy->next;
     }
 };
