@@ -5,7 +5,7 @@ public:
         for(int asteroid : asteroids){
             bool destroyed = false;
             while(!st.empty() && asteroid < 0 && st.top()>0){
-                if(st.top()< -asteroid){
+                if(st.top() < -asteroid){
                     st.pop();
                 }
                 else if(st.top() == -asteroid){
@@ -17,6 +17,7 @@ public:
                     destroyed = true;
                     break;
                 }
+            
             }
             if(!destroyed){
                 st.push(asteroid);
