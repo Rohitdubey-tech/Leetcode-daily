@@ -15,12 +15,12 @@ public:
         queue<pair<TreeNode*, TreeNode*>>qu;
         qu.push({p,q});
         while(!qu.empty()){
-            auto front = qu.front();
+            auto node = qu.front();
             qu.pop();
-            TreeNode* a = front.first;
-            TreeNode* b = front.second;
-            if(a==NULL && b == NULL) continue;
-            if(a==NULL || b==NULL) return false;
+            TreeNode* a = node.first;
+            TreeNode* b = node.second;
+            if(a == NULL && b== NULL) continue;
+            if(a == NULL || b== NULL) return false;
             if(a->val != b->val) return false;
             qu.push({a->left, b->left});
             qu.push({a->right, b->right});
