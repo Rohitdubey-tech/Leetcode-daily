@@ -14,9 +14,9 @@ public:
     vector<vector<int>>result;
     vector<int>path;
     void dfs(TreeNode* root, int targetSum){
-        if(root == nullptr) return;
+        if(root==NULL) return;
         path.push_back(root->val);
-        if(root->left == nullptr && root->right == nullptr) {
+        if(root->left == NULL && root->right == NULL){
             if(targetSum == root->val){
                 result.push_back(path);
             }
@@ -27,10 +27,9 @@ public:
         dfs(root->left, targetSum);
         dfs(root->right, targetSum);
         path.pop_back();
-
     }
     vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
-        dfs(root,targetSum);
+        dfs(root, targetSum);
         return result;
     }
 };
