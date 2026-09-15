@@ -31,7 +31,7 @@ public:
         }
         Node* clone = new Node(node->val);
         mp[node] = clone;
-        for(Node* neighbor : node->neighbors){
+        for(Node* neighbor: node->neighbors){
             clone->neighbors.push_back(dfs(neighbor));
         }
         return clone;
