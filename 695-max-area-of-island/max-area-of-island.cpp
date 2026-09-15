@@ -1,9 +1,9 @@
 class Solution {
 public:
-    int dfs(vector<vector<int>>&grid, int r, int c){
+    int dfs(vector<vector<int>>& grid, int r, int c){
         int rows = grid.size();
         int cols = grid[0].size();
-        if(r<0 || r>=rows || c<0 || c>=cols){
+        if(r<0 || r>= rows || c<0 || c>= cols){
             return 0;
         }
         if(grid[r][c]==0){
@@ -11,11 +11,10 @@ public:
         }
         grid[r][c]=0;
         int area = 1;
-
-        area += dfs(grid, r, c+1);
-        area += dfs(grid, r, c-1);
         area += dfs(grid, r+1, c);
         area += dfs(grid, r-1, c);
+        area += dfs(grid, r, c+1);
+        area += dfs(grid, r, c-1);
 
         return area;
     }
