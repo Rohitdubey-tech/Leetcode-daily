@@ -6,7 +6,7 @@ public:
         int high = nums.size()-1;
         while(mid <= high){
             if(nums[mid]==0){
-                swap(nums[mid], nums[low]);
+                swap(nums[low], nums[mid]);
                 low++;
                 mid++;
             }
