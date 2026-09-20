@@ -8,8 +8,8 @@ public:
                 pos++;
             }
         }
-        while(pos<nums.size()){
-            nums[pos] = 0;
+        while(pos < nums.size()){
+            nums[pos]=0;
             pos++;
         }
     }
