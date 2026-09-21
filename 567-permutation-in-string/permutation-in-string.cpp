@@ -14,8 +14,9 @@ public:
         for(int i=n; i<m; i++){
             freq2[s2[i]-'a']++;
             freq2[s2[i-n]-'a']--;
-        if(freq1 == freq2) return true;
+            if(freq1 == freq2) return true;
         }
         return false;
+
     }
 };
