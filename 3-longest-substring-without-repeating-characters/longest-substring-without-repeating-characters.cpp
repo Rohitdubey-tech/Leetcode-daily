@@ -4,7 +4,7 @@ public:
         unordered_set<char>st;
         int length = 0;
         int left = 0;
-        for(int right = 0; right < s.size(); right++){
+        for(int right = 0; right<s.size(); right++){
             while(st.find(s[right]) != st.end()){
                 st.erase(s[left]);
                 left++;
