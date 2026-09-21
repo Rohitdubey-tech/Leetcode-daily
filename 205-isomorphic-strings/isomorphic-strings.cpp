@@ -4,10 +4,9 @@ public:
         if(s.length() != t.length()) return false;
         unordered_map<char, char>mp1;
         unordered_map<char, char>mp2;
-        for(int i=0; i<s.length(); i++){
+        for(int i=0; i<s.size(); i++){
             char a = s[i];
             char b = t[i];
-
             if(mp1.count(a) && mp1[a] != b){
                 return false;
             }
