@@ -3,10 +3,10 @@ public:
     bool isAnagram(string s, string t) {
         if(s.size() != t.size()) return false;
         unordered_map<char, int>mp;
-        for(int c : s){
+        for(char c : t){
             mp[c]++;
         }
-        for(int c : t){
+        for(char c : s){
             mp[c]--;
         }
         for(auto& it : mp){
