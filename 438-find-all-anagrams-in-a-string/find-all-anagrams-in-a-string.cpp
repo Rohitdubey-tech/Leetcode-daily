@@ -10,9 +10,7 @@ public:
         int k = p.size();
         for(int i=0; i<k; i++){
             freqS[s[i]-'a']++;
-            if(freqP == freqS){
-                ans.push_back(0);
-            }
+            if(freqP == freqS) ans.push_back(0);
         }
         for(int i=k; i<s.size(); i++){
             freqS[s[i]-'a']++;
