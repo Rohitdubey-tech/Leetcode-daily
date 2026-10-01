@@ -1,24 +1,34 @@
+char st[10000];
+int top=-1;
 class Solution {
 public:
-    bool isValid(string s) {
-        unordered_map<int, int>mp={
-            {'}','{'},
-            {')','('},
-            {']','['}
-        };
-        stack<int>st;
-        for(char c : s){
-            if(mp.find(c)==mp.end()){
-                st.push(c);
-            }
-            else if(!st.empty() && mp[c]==st.top()){
-                st.pop();
-            }
-            else{
-                return false;
+    inline static char bracket_open(char c){
+        switch (c){
+            case ')': return '(';
+            case '}': return '{';
+            case ']': return '[';
+        }
+        return 0;// never reach
+    }
+    static bool isValid(string& s) { 
+        top=-1;
+        if (s.size()&1) return 0;
+        for (char c: s){
+            switch(c){
+                case '(':
+                case '{':
+                case '[':
+                    st[++top]=c;
+                    break;
+                case ')': 
+                case '}':
+                case ']':
+                    if (top==-1 || st[top]!=bracket_open(c))
+                        return 0;
+                    else st[top--];
+                    break;
             }
         }
-        return st.empty();
-
+        return top==-1;
     }
 };
