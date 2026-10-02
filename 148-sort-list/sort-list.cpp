@@ -24,14 +24,15 @@ public:
         ListNode* right = sortList(second);
         return merge(left, right);
     }
+
     ListNode* merge(ListNode* left, ListNode* right){
         ListNode* dummy = new ListNode(0);
         ListNode* tail = dummy;
         while(left && right){
             if(left->val <= right->val){
                 tail->next = left;
-                tail = tail->next;
                 left = left->next;
+                tail = tail->next;
             }
             else{
                 tail->next = right;
