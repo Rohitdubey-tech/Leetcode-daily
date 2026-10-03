@@ -12,7 +12,7 @@ public:
             else{
                 currHeight = heights[i];
             }
-            while(!st.empty() && heights[st.top()]>currHeight){
+            while(!st.empty() && heights[st.top()] > currHeight){
                 int height = heights[st.top()];
                 st.pop();
                 int width;
@@ -20,11 +20,11 @@ public:
                     width = i;
                 }
                 else{
-                   width = i - st.top() - 1;
-
+                    width = i- st.top()- 1;
                 }
                 int area = width * height;
-                maxArea = max(maxArea, area);
+                maxArea = max(area, maxArea);
+
             }
             st.push(i);
         }
