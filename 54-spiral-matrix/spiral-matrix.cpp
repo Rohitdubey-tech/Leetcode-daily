@@ -1,13 +1,16 @@
 class Solution {
 public:
     vector<int> spiralOrder(vector<vector<int>>& matrix) {
-        vector<int>ans;
-        int top = 0;
-        int bottom = matrix.size()-1;
+        int row = matrix.size();
+        int cols = matrix[0].size();
         int left = 0;
-        int right = matrix[0].size()-1;
-        while(top<=bottom && left<= right){
-            for(int j=left; j<=right; j++){
+        int right = cols-1;
+        int top = 0;
+        int bottom = row -1;
+        vector<int>ans;
+
+        while(top <= bottom && left <= right){
+            for(int j= left ; j<=right; j++){
                 ans.push_back(matrix[top][j]);
             }
             top++;
@@ -15,13 +18,13 @@ public:
                 ans.push_back(matrix[i][right]);
             }
             right--;
-            if(top<=bottom){
+            if(top <= bottom){
                 for(int j=right; j>=left; j--){
                     ans.push_back(matrix[bottom][j]);
                 }
                 bottom--;
             }
-            if(left<=right){
+            if(left <= right){
                 for(int i=bottom; i>=top; i--){
                     ans.push_back(matrix[i][left]);
                 }
@@ -29,5 +32,6 @@ public:
             }
         }
         return ans;
+
     }
 };
