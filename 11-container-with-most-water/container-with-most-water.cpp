@@ -1,9 +1,8 @@
 class Solution {
 public:
     int maxArea(vector<int>& height) {
-        int n = height.size();
         long long left = 0;
-        long long right = n-1;
+        long long right = height.size()-1;
         long long maxWater = 0;
         while(left < right){
             long long width = right - left;
