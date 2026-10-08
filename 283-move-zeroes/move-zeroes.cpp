@@ -9,7 +9,7 @@ public:
             }
         }
         while(pos < nums.size()){
-            nums[pos]=0;
+            nums[pos] = 0;
             pos++;
         }
     }
