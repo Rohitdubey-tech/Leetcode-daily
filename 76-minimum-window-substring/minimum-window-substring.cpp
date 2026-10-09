@@ -10,7 +10,7 @@ public:
         int start = 0;
         int required = t.size();
         int minLength = INT_MAX;
-        for(int right = 0; right<s.size(); right++){
+        for(int right=0; right<s.size(); right++){
             if(mp[s[right]]>0){
                 required--;
             }
@@ -21,12 +21,13 @@ public:
                     start = left;
                 }
                 mp[s[left]]++;
-                if(mp[s[left]]>0) required++;
+                if(mp[s[left]]>0){
+                    required++;
+                }
                 left++;
             }
         }
-        if(minLength ==INT_MAX) return "";
+        if(minLength == INT_MAX) return "";
         return s.substr(start, minLength);
-
     }
 };
