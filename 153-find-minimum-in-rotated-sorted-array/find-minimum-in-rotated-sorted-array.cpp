@@ -13,6 +13,5 @@ public:
             }
         }
         return nums[low];
-
     }
 };
