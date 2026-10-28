@@ -8,8 +8,10 @@ public:
             if(mp[need] > 0){
                 count++;
                 mp[need]--;
-            }else{
-            mp[num]++;}
+            }
+            else{
+                mp[num]++;
+            }
         }
         return count;
     }
