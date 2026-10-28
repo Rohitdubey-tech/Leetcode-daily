@@ -4,7 +4,13 @@ public:
         if(str1 + str2 != str2 + str1){
             return "";
         }
-        int len = gcd(str1.size(), str2.size());
-        return str1.substr(0,len);
+        int a = str1.size();
+        int b = str2.size();
+        while(b != 0){
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return str1.substr(0,a);
     }
 };
