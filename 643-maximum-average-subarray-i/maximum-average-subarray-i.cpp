@@ -11,7 +11,6 @@ public:
             sum += nums[i] - nums[i-k];
             maxSum = max(maxSum, sum);
         }
-        return maxSum / k;
-
+        return maxSum/k;
     }
 };
