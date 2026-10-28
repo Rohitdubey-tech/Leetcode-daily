@@ -9,12 +9,12 @@ public:
             long long minHeight = min(height[left], height[right]);
             long long area = width * minHeight;
             maxWater = max(maxWater, area);
-            if(height[left] < height[right]){
+            if(height[left]< height[right]){
                 left++;
             }
             else{
                 right--;
-            }
+        }
         }
         return maxWater;
     }
