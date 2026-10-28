@@ -8,7 +8,7 @@ public:
             while(left < right && vowels.find(s[left]) == string::npos){
                 left++;
             }
-            while(left < right && vowels.find(s[right])== string::npos){
+            while(left < right && vowels.find(s[right]) == string::npos){
                 right--;
             }
             swap(s[left], s[right]);
