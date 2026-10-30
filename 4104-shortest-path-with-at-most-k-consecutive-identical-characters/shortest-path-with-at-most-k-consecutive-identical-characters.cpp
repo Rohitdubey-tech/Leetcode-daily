@@ -1,55 +1,46 @@
-#define ll long long
 class Solution {
-private:
-    
 public:
     int shortestPath(int n, vector<vector<int>>& edges, string labels, int k) {
-        vector<vector<pair<ll,ll>>> adj(n);
-        for(auto it : edges){
-            adj[it[0]].push_back({it[1],it[2]});
+        vector<vector<pair<int,int>>>adj(n);
+        for(auto& edge:edges){
+            int u=edge[0],v=edge[1],w=edge[2];
+            adj[u].push_back({v,w});
         }
-        vector<vector<ll>> dist(n,vector<ll>(k + 1,LLONG_MAX/2));
-        priority_queue<vector<ll>,vector<vector<ll>>,greater<>> pq;
-        dist[0][1] = 0;
-        pq.push({0,0,1});
+        vector<vector<long long>>dist(n,vector<long long>(k+1,LLONG_MAX));
+       priority_queue<
+               vector<long long>,
+               vector<vector<long long>>,
+        greater<vector<long long>>>pq;
+        dist[0][k]=0;
+        pq.push({0,0,k});
 
         while(!pq.empty()){
-            vector<ll> curr = pq.top();
+            auto i=pq.top();
             pq.pop();
-            ll d = curr[0];
-            ll u = curr[1];
-            ll r = curr[2];
-
-            if(d > dist[u][r]){
-                continue;
-            }
-
-            for(auto it : adj[u]){
-                int v = it.first;
-                int w = it.second;
-
-                int newr = 1;
-                if(labels[v] == labels[u]){
-                    newr = r + 1;
+            int d=i[0],u=i[1],rem=i[2];
+            if(d>dist[u][rem])continue;
+            for(auto& it:adj[u]){
+                int v=it.first,w=it.second;
+                if(labels[u]==labels[v]){
+                    if(rem<=1)continue;
+                    int nrem=rem-1;
+                    if(dist[v][nrem]>d+w){
+                        dist[v][nrem]=d+w;
+                        pq.push({dist[v][nrem],v,nrem});
+                    }
                 }
-                if(newr > k){
-                    continue;
-                }
-
-                ll nd = d + w;
-                if(nd < dist[v][newr]){
-                    dist[v][newr] = nd;
-                    pq.push({nd,(ll)v,(ll)newr});
+                else{
+                    if(dist[v][k]>d+w){
+                        dist[v][k]=d+w;
+                        pq.push({dist[v][k],v,k});
+                    }
                 }
             }
         }
-        ll sol = LLONG_MAX;
-        for(int i = 0;i<=k;i++){
-            sol = min(sol,dist[n-1][i]);
+        long long ans=LLONG_MAX;
+        for(int rem=1;rem<=k;rem++){
+            ans=min(ans,dist[n-1][rem]);
         }
-        if(sol == LLONG_MAX){
-            return -1;
-        }
-        return sol;
+        return ans==LLONG_MAX?-1:(int)ans;
     }
 };
