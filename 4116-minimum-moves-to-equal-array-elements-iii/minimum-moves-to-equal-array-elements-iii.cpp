@@ -1,22 +1,11 @@
 class Solution {
 public:
-    int minMoves(vector<int>& nums) {
-        int count = 0;
-        int ans = 0;
-        int maximum = nums[0];
-
-        for (int num : nums) {
-            if (maximum < num) {
-                ans += (num - maximum) * count;
-                maximum = num;
-            } 
-            else if (num < maximum) {
-                ans += maximum - num;
-            }
-
-            count++;
+    long long minMoves(vector<int>& nums) {
+        int mx = *max_element(nums.begin(), nums.end());
+        long long res = 0;
+        for (int x : nums) {
+            res += (mx - x);
         }
-
-        return ans;
+        return res;
     }
 };
