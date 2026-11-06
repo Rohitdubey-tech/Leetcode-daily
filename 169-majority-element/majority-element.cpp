@@ -7,7 +7,7 @@ public:
             if(count == 0){
                 candidate = num;
             }
-            if(candidate == num){
+            if(num == candidate){
                 count++;
             }
             else{
