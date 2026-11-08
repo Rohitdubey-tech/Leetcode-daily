@@ -1,12 +1,12 @@
 class Solution {
 public:
     bool isValid(string s) {
-        unordered_map<int, int>mp ={
+        stack<int>st;
+        unordered_map<char, int>mp = {
             {']','['},
             {'}','{'},
             {')','('}
         };
-        stack<int>st;
         for(char c : s){
             if(mp.find(c) == mp.end()){
                 st.push(c);
@@ -17,7 +17,6 @@ public:
             else{
                 return false;
             }
-
         }
         return st.empty();
     }
