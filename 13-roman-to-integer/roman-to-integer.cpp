@@ -11,14 +11,14 @@ public:
             {'D', 500},
             {'M', 1000}
         };
-        for(int i=0; i<s.size()-1; i++){
-            if(roman[s[i]]<roman[s[i+1]]){
+        for(int i=0; i<s.size(); i++){
+            if(i+1 < s.size() && roman[s[i]]<roman[s[i+1]]){
                 res -= roman[s[i]];
             }
             else{
                 res += roman[s[i]];
             }
         }
-        return res + roman[s[s.size()-1]];
+        return res ;
     }
 };
