@@ -8,10 +8,10 @@ public:
             while(!st.empty() && temperatures[i] > temperatures[st.top()]){
                 int prevIndex = st.top();
                 st.pop();
-                ans[prevIndex] = i - prevIndex;
+                ans[prevIndex] = i- prevIndex;
             }
             st.push(i);
         }
         return ans;
-            }
+    }
 };
