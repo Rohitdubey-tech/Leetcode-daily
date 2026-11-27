@@ -1,13 +1,27 @@
+
 class Solution {
 public:
     int reverse(int x) {
-        long long rev = 0;
-        while( x != 0){
-            int digit = x % 10;
-            rev = rev * 10 + digit;
-            x /= 10;
+        int revNum = 0;
+
+        while (x != 0) {
+            int ld = x % 10;
+            x = x / 10;
+
+            // Check overflow before multiplication
+            if (revNum > INT_MAX / 10 ||
+                (revNum == INT_MAX / 10 && ld > 7)) {
+                return 0;
+            }
+
+            if (revNum < INT_MIN / 10 ||
+                (revNum == INT_MIN / 10 && ld < -8)) {
+                return 0;
+            }
+
+            revNum = revNum * 10 + ld;
         }
-        if(rev > INT_MAX || rev < INT_MIN) return 0;
-        return (int)rev;
+
+        return revNum;
     }
 };
